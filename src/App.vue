@@ -1,27 +1,16 @@
 <template>
   <div id="app">
-    <h3>掲示板に投稿する</h3>
-    <label for="name">ニックネーム: </label>
-    <input id="name" type="text" v-model="name">
-    <br><br>
-    <label for="comment">コメント: </label>
-    <textarea id="comment" v-model="comment"></textarea>
-    <h2>掲示板</h2>
+    <header>
+      <router-link to="/" class="header-item">掲示板</router-link>
+      <router-link to="/login" class="header-item">ログイン</router-link>
+      <router-link to="/register" class="header-item">登録</router-link>
+    </header>
+    <router-view></router-view>
   </div>
 </template>
 
-<script>
-export default {
-  data() {
-    return {
-      name: '',
-      comment: '',
-    }
-  }
-}
-</script>
 
-<style>
+<style scoped>
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -29,5 +18,8 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+}
+.header-item {
+  padding: 10px;
 }
 </style>
