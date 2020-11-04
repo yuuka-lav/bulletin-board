@@ -12,7 +12,6 @@
 </template>
 
 <script>
-import axios from '../axios-auth'
 
 export default {
   data() {
@@ -23,13 +22,10 @@ export default {
   },
   methods: {
     login() {
-      axios.post('/accounts:signInWithPassword?key=API KEY', {
+      this.$store.dispatch('login', {
         email: this.email,
         password: this.password,
-        returnSecureToken: true,
-      }).then( response => {
-        console.log(response);
-      });
+      })
       this.email ='';
       this.password ='';
     }
