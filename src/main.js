@@ -32,9 +32,10 @@ const interceptorsResponse = axios.interceptors.response.use(
 axios.interceptors.request.eject(interceptorsRequest) //requestの処理を取り消し
 axios.interceptors.response.eject(interceptorsResponse);
 
-
-new Vue({
-  router,
-  store,
-  render: h => h(App),
-}).$mount('#app')
+store.dispatch('autologin').then(() => {  //最初にautologinが呼ばれる
+  new Vue({
+    router,
+    store,
+    render: h => h(App),
+  }).$mount('#app')
+});
